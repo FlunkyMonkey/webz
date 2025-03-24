@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="500" height="300" viewBox="0 0 500 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="500" height="300" rx="20" fill="#f8f9fa" />
+  
+  <!-- Cat body -->
+  <ellipse cx="250" cy="180" rx="120" ry="70" fill="#a88c7d" />
+  
+  <!-- Cat head -->
+  <circle cx="160" cy="160" r="50" fill="#a88c7d" />
+  
+  <!-- Cat ears -->
+  <path d="M130 130 L110 90 L140 110 Z" fill="#a88c7d" />
+  <path d="M190 130 L210 90 L180 110 Z" fill="#a88c7d" />
+  
+  <!-- Cat face -->
+  <ellipse cx="145" cy="165" rx="8" ry="1" fill="#333" /> <!-- Left eye (closed) -->
+  <ellipse cx="175" cy="165" rx="8" ry="1" fill="#333" /> <!-- Right eye (closed) -->
+  <ellipse cx="160" cy="175" rx="5" ry="3" fill="#f7a4a4" /> <!-- Nose -->
+  
+  <!-- Cat tail -->
+  <path d="M370 180 Q400 150 420 180 Q430 200 410 210 Q390 220 370 180 Z" fill="#a88c7d" />
+  
+  <!-- Cat paws -->
+  <ellipse cx="200" cy="230" rx="20" ry="15" fill="#c4a99a" />
+  <ellipse cx="300" cy="230" rx="20" ry="15" fill="#c4a99a" />
+  
+  <!-- ZZZ for sleeping -->
+  <text x="220" y="120" font-family="Arial" font-size="24" font-weight="bold" fill="#555">Z</text>
+  <text x="240" y="100" font-family="Arial" font-size="28" font-weight="bold" fill="#555">Z</text>
+  <text x="265" y="80" font-family="Arial" font-size="32" font-weight="bold" fill="#555">Z</text>
+</svg>

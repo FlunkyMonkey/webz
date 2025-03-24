@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: webz-nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/sites-available:/etc/nginx/sites-available
+      - ./nginx/sites-enabled:/etc/nginx/sites-enabled
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+      - ../vgriz/public:/var/www/webz/vgriz/public
+      - ../regulogix/public:/var/www/webz/regulogix/public
+      - ../familycabin/public:/var/www/webz/familycabin/public
+    depends_on:
+      - vgriz
+      - regulogix
+      - familycabin
+    restart: always
+    networks:
+      - webz-network
+
+  vgriz:
+    build:
+      context: ../vgriz
+      dockerfile: Dockerfile
+    container_name: webz-vgriz
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+    networks:
+      - webz-network
+
+  regulogix:
+    build:
+      context: ../regulogix
+      dockerfile: Dockerfile
+    container_name: webz-regulogix
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3002
+    networks:
+      - webz-network
+
+  familycabin:
+    build:
+      context: ../familycabin
+      dockerfile: Dockerfile
+    container_name: webz-familycabin
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3003
+    networks:
+      - webz-network
+
+  certbot:
+    image: certbot/certbot
+    container_name: webz-certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    depends_on:
+      - nginx
+    command: renew
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+networks:
+  webz-network:
+    driver: bridge
