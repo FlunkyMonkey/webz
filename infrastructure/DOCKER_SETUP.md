@@ -222,7 +222,10 @@ To update a specific website:
 cd /var/www/webz
 git pull
 
-# Rebuild and restart containers
+# Option 1: Using the deployment script
+./shared/scripts/deploy.sh vgriz  # or regulogix or familycabin or all
+
+# Option 2: Manually rebuilding with Docker Compose
 cd infrastructure
 docker-compose build vgriz  # or regulogix or familycabin
 docker-compose up -d
@@ -254,6 +257,17 @@ docker-compose restart vgriz
 
 ```bash
 docker-compose down
+```
+
+### Maintenance Tasks
+
+You can use the maintenance script for common tasks:
+
+```bash
+cd /var/www/webz
+./shared/scripts/maintenance.sh backup   # Create backups
+./shared/scripts/maintenance.sh monitor  # Check system status
+./shared/scripts/maintenance.sh cleanup  # Clean up old logs and backups
 ```
 
 ## Backup Strategy
@@ -311,4 +325,4 @@ Test the Nginx configuration:
 
 ```bash
 docker-compose exec nginx nginx -t
-```
+``` 

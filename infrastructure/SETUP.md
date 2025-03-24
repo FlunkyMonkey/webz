@@ -131,6 +131,37 @@ Certbot creates a timer that will automatically renew certificates. You can manu
 sudo certbot renew
 ```
 
+### Deploying Updates
+
+Use the deployment script located in the shared/scripts directory:
+
+```bash
+# Deploy updates to all websites
+cd /var/www/webz
+./shared/scripts/deploy.sh all
+
+# Or deploy to a specific website
+./shared/scripts/deploy.sh vgriz
+./shared/scripts/deploy.sh regulogix
+./shared/scripts/deploy.sh familycabin
+```
+
+### Maintenance Tasks
+
+Use the maintenance script located in the shared/scripts directory for common maintenance tasks:
+
+```bash
+# Create backups
+cd /var/www/webz
+./shared/scripts/maintenance.sh backup
+
+# Monitor system
+./shared/scripts/maintenance.sh monitor
+
+# Clean up old logs and backups
+./shared/scripts/maintenance.sh cleanup
+```
+
 ## Monitoring
 
 Set up basic monitoring using PM2:
