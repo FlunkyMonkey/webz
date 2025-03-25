@@ -9,7 +9,19 @@
         /* Site-specific styles */
         .logo { color: #b06a3b; }
         h1 { color: #b06a3b; }
-        .container { background-color: #fffaf5; }
+        .container { 
+            background-color: #fffaf5; 
+            border: 2px dashed #e0b799;
+        }
+        .button {
+            background-color: #b06a3b;
+        }
+        .bubble {
+            background-color: rgba(176, 106, 59, 0.1);
+        }
+        .container::before, .container::after {
+            background-color: rgba(176, 106, 59, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -18,9 +30,12 @@
         <div class="image-container">
             <img src="/shared/images/sleeping-kitty.svg" alt="Sleeping Kitty">
         </div>
-        <h1>Hello World</h1>
-        <p>Welcome to familycabin.io - Family management and vacation property platform.</p>
-        <p>This site is currently under development. Please check back soon for updates!</p>
+        <h1>Cozy Getaways Await!</h1>
+        <div class="bubble">
+            <p>Your perfect family vacation management platform for creating lasting memories together.</p>
+        </div>
+        <p>We're building something special! Check back soon for our exciting launch.</p>
+        <button class="button">Join Waitlist</button>
         <div class="footer">
             &copy; 2025 Family Cabin. All rights reserved.
         </div>
